@@ -17,39 +17,31 @@
          <div  *ngFor='let img of images; let j = index'>
         <div *ngIf="img['img-type'] !== 'pdf'"
              class="image"
-
              [class.active]="img['active']"
              [@imageTransition]="img['transition']"
              [style.background-image]="img['viewerImageLoaded'] ? 'url('+img[categorySelected]['path']+')' : Math.abs(currentIdx-j) <=1 ? 'url('+img['preview_xxs']['path']+')' : ''"
-             [style.left]="transform+'px'">
-
+             [style.left]="transform+'px'"></div>
            </div>
-           <div  class="image" style="overflow:auto"
-
-            [class.active]="img['active']"
-             [@imageTransition]="img['transition']" [style.left]="transform+'px'">
-           <pdf-viewer *ngIf="img['img-type'] === 'pdf'" [src]="img['preview_xxs']['path']"
-           [show-all]="true"
-
-              [original-size]="false"
-              style="display: block;"
-
-  ></pdf-viewer>
-  <!-- <a href='pageurl'>PDF Name</a> -->
-  <!-- <object [data]="pageurl" type="application/pdf">
-      <embed [src]="pageurl" type="application/pdf" />
-  </object> -->
-  <!-- <object *ngIf="img['img-type'] === 'pdf'"width="500" height="600" [data]="pageurl" type="application/pdf"></object> -->
-            </div>
-</div>
-  <div>
-</div>
-        <!-- <div *ngFor='let img of images; let j = index'
-            >
-            <img  *ngIf="img['img-type'] !== 'pdf'" class="preloading-image"
-             test="img['img-type']"
+      <div *ngFor='let img of images; let j = index' >
+        <img *ngIf="img['img-type'] !== 'pdf'"
+             class="preloading-image"
              (load)="imageLoaded(img)"
              src="{{ Math.abs(currentIdx-j) <=1 ? img[categorySelected]['path'] : ''}}"/>
-           </div> -->
+
+           </div>
+           <div style="overflow:auto" *ngFor='let img of images; let j = index'
+                class="image"
+                [class.active]="img['active']"
+                [@imageTransition]="img['transition']"
+                [style.left]="transform+'px'">
+
+                <pdf-viewer *ngIf="img['img-type'] === 'pdf'" [src]="img['preview_xxs']['path']"
+              [show-all]="true"
+              [original-size]="false"
+              style="display: block;">
+        </pdf-viewer>
+
+              </div>
+
     </div>
 </div>
