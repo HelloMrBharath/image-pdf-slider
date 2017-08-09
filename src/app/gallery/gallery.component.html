@@ -1,0 +1,17 @@
+<div #galleryContainer class="galleryContainer">
+    <div class="innerGalleryContainer">
+        <div *ngFor='let imgrow of gallery; let i = index'
+             class="imagerow"
+             [style.margin-bottom.px]="calcImageMargin()">
+            <td  *ngFor='let img of imgrow; let j = index'>
+
+                 <!-- <p  *ngIf="img['img-type'] !== 'pdf'" (click)="openImageViewer(img)">{{img.name}}</p> -->
+                  <!-- <p  *ngIf="img['img-type'] == 'pdf'" (click)="openPdfViewer(img)">{{img.name}}</p> -->
+                   <p  (click)="openImageViewer(img)">{{img.name}}</p>
+
+               </td>
+        </div>
+    </div>
+</div>
+
+<viewer></viewer>
